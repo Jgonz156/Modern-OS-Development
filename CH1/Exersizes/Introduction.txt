@@ -1,0 +1,30 @@
+Excersizes
+
+1.1 What is the difference between an operating system and middelware?
+    - An operating system is the software reponsible for utilizing a devices hardware to support other software on the device. Provides an API for higher level applications to use the low-level hardware.
+
+    - Middleware, like the operating system, are programs that work between applications in support of low-level functionality but is instead built ontop of the OS API rather than the hardware itself.
+
+1.2 What do operating systems and middleware have in common?
+    - Both work "behind-the-scenes" to provide low-level functionality for programs to build on.
+
+1.3 What is the relationship between threads and processes?
+    - A process is an active program that the OS aportions its own virtual memory for operation. Threads are the units of computation a process runs to complete operations that exist within the memory space.
+
+1.4 What is one way an operating system might isolate threads from unwanted interactions, and what is one way middleware might do so?
+    - An operating system might support synchronization patterns to ensure threads don't corrupt each others data.
+
+    - Middleware might support atomic transactions to ensure concurrent threads cannot interfere with each other in a database for instance.
+
+1.5 What is one way an operating system might provide persistent storage and what is one way middleware might do so?
+    - An operating system might provide corruption and crash resistent storage in the form of a file directory that holds text data. (Persistent Storage)
+
+    - Middleware might use such underlying file system to build persistent storage structures like a relational database.
+
+1.6 What is one way an operating system might support network communication and what is one way middleware might do so?
+    - An operating system might provide netwrok sockets and algorithms to help send packets across a network.
+
+    - Middleware might provide remote procedure calls (RPC) to help faciliate web services for higher level applications
+
+1.7 Of All the topics previewed in this chapter, which one are you most looking forward to learning more about?
+    - I'm most excited to learn about synchronization and enxuring the efficiency and safety of thread based computations.

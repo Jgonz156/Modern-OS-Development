@@ -1,0 +1,19 @@
+Programming Project 1.1:
+    Write, test, and debug a program in the language of your choice, to carry out any task you choose. Then write a list of all the 
+    services you suspect the operating system is providing in order to support the execution of your sample program. If you think the 
+    program is also relying on any middleare services, list those aswell.
+
+I believe that some operating system services that are being provided are:
+
+	Virtual memory to protect the operation of the program,
+	
+	Thread synchronization to ensure the program is not running past the threads responsible for returning values from the command line,
+	
+	Thread scheduling, since this program cannot be completed without user input, the OS must ensure running the program does not 
+    deadlock the rest of the pc,
+	
+	The program files are being stored in the OS' file directory.
+	
+I believe some middleware services being provided are:
+
+    Some communication translation between the terminal shell and the program interface.
