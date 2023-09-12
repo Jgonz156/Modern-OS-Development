@@ -1,0 +1,7 @@
+Programming Project(s) 2.(1, 2, 3, 4):
+
+NOTE: The reason for the odd look of this problem is that the book specifices to do the same problem in multiple languages, but this repository is about learning Rust, so I only preform the problem once
+
+2.1 If you program in C, read the documentation for pthread_cancel. Using this information and the model provided in Figure 2.4 on page 26, write a program where the initial (main) thread creates a second thread. The main thread should read input from the keyboard, waiting until the user presses the Enter key. At that point, it should kill off the second thread and print out a message reporting that it has done so. Meanwhile, the second thread should be in an infinite loop, each time around sleeping five seconds and then printing out a message. Try running your program. Can the sleeping thread print its periodic messages while the main thread is waiting for keyboard input? Can the main thread read input, kill the sleeping thread, and print a message while the sleeping thread is in the early part of one of its five-second sleeps?
+
+    - The sleeping thread is allowed to post its repeated messsage while the main thread awaits the keybaord input! The main thread is stil able to stop the thread in the middle of its operation as well!
