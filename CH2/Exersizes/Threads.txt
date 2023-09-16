@@ -14,12 +14,26 @@ Excersizes
 
 2.3 Suppose thread A goes through a loop 100 times, each time performing (i) one disk I/O operation, taking 10 milliseconds, and then (ii) some computation, taking 1 millisecond. While each 10-millisecond disk operation is in progress, thread A cannot make any use of the processor. Thread B runs for 1 second, purely in the processor, with no I/O. One millisecond of processor time is spent each time the processor switches threads; other than this switching cost, there is no problem with the processor working on thread B during one of thread A’s I/O operations. (The processor and disk drive do not contend for memory access bandwidth, for example.)
     (a) Suppose the processor and disk work purely on thread A until its completion, and then the processor switches to thread B and runs all of that thread. What will the total elapsed time be?
+
+	- With everything in sequence it would be 100(10ms + 1ms) + 1000ms = 2100ms or 2.1 seconds
+
     (b) Suppose the processor starts out working on thread A, but every time thread A performs a disk operation, the processor switches to B during the operation and then back to A upon the disk operation’s completion. What will the total elapsed time be?
 
-	(a) With everything in sequence it would be 100(10ms + 1ms) + 1000ms = 
+	- Since we can interleave the operations we can modify our math as follows 100(10ms + 10ms + 1ms + 2ms ) = 1300ms or 1.3 seconds
+
 2.4 Consider a uniprocessor system where each arrival of input from an external source triggers the creation and execution of a new thread, which at its completion produces some output. We are interested in the response time from triggering input to resulting output.
     (a) Input arrives at time 0 and again after 1 second, 2 seconds, and so forth. Each arrival triggers a thread that takes 600 milliseconds to run. Before the thread can run, it must be created and dispatched, which takes 10 milliseconds. What is the average response time for these inputs?
+
+	- the average is 610ms from start to completion for all ops
+
     (b) Now a second source of input is added, with input arriving at times 0.1 seconds, 1.1 seconds, 2.1 seconds, and so forth. These inputs trigger threads that only take 100 milliseconds to run, but they still need 10 milliseconds to create and dispatch. When an input arrives, the resulting new thread is not created or dispatched until the processor is idle. What is the average response time for this second class of inputs? What is the combined average response time for the two classes?
+
+	- This second class of input must wait until the 610ms of the first is over even though it arrived 100ms after it. Thus from the start (100ms in) to the end at 720ms they take an average of 620ms from start to finish each time. The average of both operations is 615ms
+
     (c) Suppose we change the way the second class of input is handled. When the input arrives, the new thread is immediately created and dispatched, even if that preempts an already running thread. When the new thread completes, the preempted thread resumes execution after a 1 millisecond thread switching delay. What is the average response time for each class of inputs? What is the combined average for the two together?
 
+	- The original class gets extended slightly since it now goes from 0ms to 721ms to finish. The second class however is greatly improved now going from 100ms to 210ms resulting in a runtime of just 110ms from start to finish. Although the first class was slightly reduced is responsiveness, due to the second class increasing so much, the felt speed of the computer is increased on average to a runtime of just 405.5 ms!
+
 2.5 When control switches away from a thread and later switches back to that thread, the thread resumes execution where it left off. Similarly, when a procedure calls a subroutine and later the subroutine returns, execution picks back up where it left off in the calling procedure. Given this similarity, what is the essential difference between thread switching and subroutine call/return? You saw that each thread has a separate stack, each in its own area of memory. Why is this not necessary for subroutine invocations?
+
+	- Since subroutine(functions) are a small piece of a threads runtime in small stack frames, it job is to reuse code from the thread to prefomr its actions, They can just be allocated new chunks of the empty stack, complete their small computations and then be harmlessly removed to return to the previous subroutine since they dont modify each other. Thus it is unnecessary to require such heavy switching overhead. 
