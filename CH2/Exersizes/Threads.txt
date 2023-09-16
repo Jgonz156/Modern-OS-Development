@@ -2,12 +2,21 @@ Excersizes
 
 2.1 Based on the examples in section 2.2, name at least one difference between the sleep procedure in POSIX API and the Thread.sleep method in the Java API.
 
-2.2 Give at least three more examples, beyond those given in the text, when it would be useful to run more concurrent threads on a computer that that computer's number of processors? Indicate how your examples fit the general reasons to use concurrency listed in the text.
+	- Since Java does not automatically run the thread on creation like the POSIX API it requires additional code to specify when to run its new thread.
+
+2.2 Give at least three more examples, beyond those given in the text, when it would be useful to run more concurrent threads on a computer than that computer's number of processors? Indicate how your examples fit the general reasons to use concurrency listed in the text.
+
+	- Running modern games requires a lot of coordiation between the CPU and GPU to ensure smooth operation. In this situation it is very imperative to ensure that threads can be schedules dynamically based on the players actions.
+
+	- Many individuals use multi-monitor setups to increase productivity. This means some individuals could run off screen tasks, like music players, have a video stream running for say a tutorial, and the actual work they are preforming all in view and active at the same time, requires coordination between the multiple programs to ensure there are no hangups.
+
+	- In the same vein as the previous, since many individuals are buying high power devices for their home systems, some individuals practice coin mining or intensive rendering to make additional use of their devices while they idle or preform minor tasks.
 
 2.3 Suppose thread A goes through a loop 100 times, each time performing (i) one disk I/O operation, taking 10 milliseconds, and then (ii) some computation, taking 1 millisecond. While each 10-millisecond disk operation is in progress, thread A cannot make any use of the processor. Thread B runs for 1 second, purely in the processor, with no I/O. One millisecond of processor time is spent each time the processor switches threads; other than this switching cost, there is no problem with the processor working on thread B during one of thread A’s I/O operations. (The processor and disk drive do not contend for memory access bandwidth, for example.)
     (a) Suppose the processor and disk work purely on thread A until its completion, and then the processor switches to thread B and runs all of that thread. What will the total elapsed time be?
     (b) Suppose the processor starts out working on thread A, but every time thread A performs a disk operation, the processor switches to B during the operation and then back to A upon the disk operation’s completion. What will the total elapsed time be?
 
+	(a) With everything in sequence it would be 100(10ms + 1ms) + 1000ms = 
 2.4 Consider a uniprocessor system where each arrival of input from an external source triggers the creation and execution of a new thread, which at its completion produces some output. We are interested in the response time from triggering input to resulting output.
     (a) Input arrives at time 0 and again after 1 second, 2 seconds, and so forth. Each arrival triggers a thread that takes 600 milliseconds to run. Before the thread can run, it must be created and dispatched, which takes 10 milliseconds. What is the average response time for these inputs?
     (b) Now a second source of input is added, with input arriving at times 0.1 seconds, 1.1 seconds, 2.1 seconds, and so forth. These inputs trigger threads that only take 100 milliseconds to run, but they still need 10 milliseconds to create and dispatch. When an input arrives, the resulting new thread is not created or dispatched until the processor is idle. What is the average response time for this second class of inputs? What is the combined average response time for the two classes?
